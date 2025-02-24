@@ -1,0 +1,117 @@
+/* Base theme variables */
+:root {
+  /* Light theme colors */
+  --text-primary: #000000;
+  --text-secondary: #1F1F1F;
+  --text-muted: #4A4A4A;
+  --text-hover: #1F5C32;
+  --text-active: #0D3F1F;
+
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F8F8;
+  --bg-hover: rgba(31, 92, 50, 0.05);
+  --bg-active: rgba(13, 63, 31, 0.1);
+
+  --border-primary: #0D3F1F;
+  --border-secondary: rgba(13, 63, 31, 0.2);
+  --border-hover: #1F5C32;
+
+  --button-primary: #0D3F1F;
+  --button-hover: #1F5C32;
+  --button-text: #FFFFFF;
+}
+
+/* Dark theme colors */
+.dark {
+  --text-primary: #FFFFFF;
+  --text-secondary: #E3FFED;
+  --text-muted: #8B949E;
+  --text-hover: #38FF7E;
+  --text-active: #38FF7E;
+
+  --bg-primary: #030A06;
+  --bg-secondary: #0C1410;
+  --bg-hover: rgba(56, 255, 126, 0.05);
+  --bg-active: rgba(56, 255, 126, 0.1);
+
+  --border-primary: #1b8140;
+  --border-secondary: rgba(56, 255, 126, 0.2);
+  --border-hover: #38FF7E;
+
+  --button-primary: #38FF7E;
+  --button-hover: rgba(56, 255, 126, 0.9);
+  --button-text: #030A06;
+}
+
+@layer components {
+  /* Base text styles */
+  .text-themed {
+    @apply text-[var(--text-primary)] transition-colors duration-300;
+  }
+
+  .text-themed-secondary {
+    @apply text-[var(--text-secondary)] transition-colors duration-300;
+  }
+
+  .text-themed-muted {
+    @apply text-[var(--text-muted)] transition-colors duration-300;
+  }
+
+  /* Background styles */
+  .bg-themed {
+    @apply bg-[var(--bg-primary)] transition-colors duration-300;
+  }
+
+  .bg-themed-secondary {
+    @apply bg-[var(--bg-secondary)] transition-colors duration-300;
+  }
+
+  /* Border styles */
+  .border-themed {
+    @apply border-[var(--border-primary)] transition-colors duration-300;
+  }
+
+  .border-themed-secondary {
+    @apply border-[var(--border-secondary)] transition-colors duration-300;
+  }
+
+  /* Interactive states */
+  .hover-themed {
+    @apply hover:text-[var(--text-hover)] 
+           hover:bg-[var(--bg-hover)]
+           transition-all duration-300;
+  }
+
+  .active-themed {
+    @apply active:text-[var(--text-active)]
+           active:bg-[var(--bg-active)]
+           transition-all duration-300;
+  }
+
+  /* Button styles */
+  .button-themed {
+    @apply bg-[var(--button-primary)]
+           text-[var(--button-text)]
+           border-2 border-[var(--border-primary)]
+           hover:bg-[var(--button-hover)]
+           hover:border-[var(--border-hover)]
+           transition-all duration-300;
+  }
+
+  /* Card styles */
+  .card-themed {
+    @apply bg-[var(--bg-secondary)]
+           border border-[var(--border-secondary)]
+           hover:border-[var(--border-hover)]
+           transition-all duration-300;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-themed {
+    @apply bg-gradient-to-b 
+           from-[var(--bg-primary)] 
+           via-[var(--bg-secondary)] 
+           to-[var(--bg-primary)]
+           transition-all duration-300;
+  }
+}

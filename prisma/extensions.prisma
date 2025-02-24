@@ -1,0 +1,32 @@
+// Custom model extensions for Prisma Client
+model ErrorRecord {
+  id          String   @id @default(uuid())
+  code        String
+  message     String
+  severity    String
+  timestamp   BigInt
+  context     Json     @default("{}")
+  metadata    Json     @default("{}")
+  stackTrace  String?
+  resolved    Boolean  @default(false)
+  resolvedAt  BigInt?
+  resolvedBy  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("error_records")
+}
+
+model ErrorAggregation {
+  id           String   @id @default(uuid())
+  period       String
+  startTime    BigInt
+  endTime      BigInt
+  totalErrors  Int
+  bySeverity   Json
+  byCode       Json
+  errorRate    Float
+  createdAt    DateTime @default(now())
+
+  @@map("error_aggregations")
+}

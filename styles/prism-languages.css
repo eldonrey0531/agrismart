@@ -1,0 +1,209 @@
+/* Language-specific styles */
+pre[class*="language-"] {
+  position: relative;
+  margin: 0.5em 0;
+  overflow: visible;
+  padding: 1em;
+}
+
+pre[class*="language-"]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 1em;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 0 0 0.25rem 0.25rem;
+  background: #e5e7eb;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  opacity: 0.75;
+  transform: translateY(-100%);
+  transition: opacity 0.2s;
+}
+
+pre[class*="language-"]:hover::before {
+  opacity: 1;
+}
+
+/* JSON specific */
+.language-json .token.property {
+  color: #5a67d8;
+}
+
+.language-json .token.string {
+  color: #047857;
+}
+
+.language-json .token.number {
+  color: #b45309;
+}
+
+.language-json .token.boolean {
+  color: #7c3aed;
+}
+
+.language-json .token.null {
+  color: #dc2626;
+}
+
+/* HTML specific */
+.language-html .token.tag {
+  color: #2563eb;
+}
+
+.language-html .token.attr-name {
+  color: #7c3aed;
+}
+
+.language-html .token.attr-value {
+  color: #047857;
+}
+
+.language-html .token.comment {
+  color: #6b7280;
+}
+
+/* CSV specific */
+.language-csv .token.delimiter {
+  color: #6b7280;
+}
+
+.language-csv .token.field {
+  color: #1f2937;
+}
+
+.language-csv .token.header {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes highlight {
+  0% {
+    background-color: rgba(250, 204, 21, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.token.highlighted {
+  animation: highlight 2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.code-block-appear {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Copy button animations */
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition: all 0.2s ease;
+}
+
+pre[class*="language-"]:hover .copy-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.copy-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.copy-button.copied {
+  background: #10b981;
+  color: white;
+  border-color: #059669;
+}
+
+/* Line highlighting animations */
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: linear-gradient(to right, rgba(250, 204, 21, 0.1) 70%, rgba(250, 204, 21, 0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+  animation: highlightLine 0.5s ease-out;
+}
+
+@keyframes highlightLine {
+  from {
+    background: rgba(250, 204, 21, 0.4);
+  }
+  to {
+    background: rgba(250, 204, 21, 0.1);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  pre[class*="language-"]::before {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  .language-json .token.property {
+    color: #818cf8;
+  }
+
+  .language-json .token.string {
+    color: #34d399;
+  }
+
+  .language-json .token.number {
+    color: #fbbf24;
+  }
+
+  .language-json .token.boolean {
+    color: #a78bfa;
+  }
+
+  .language-json .token.null {
+    color: #f87171;
+  }
+
+  .copy-button {
+    background: #1f2937;
+    border-color: #374151;
+    color: #9ca3af;
+  }
+
+  .copy-button:hover {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  .copy-button.copied {
+    background: #059669;
+    border-color: #047857;
+  }
+}

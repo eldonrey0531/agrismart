@@ -1,0 +1,59 @@
+MIT License
+
+Copyright (c) 2025 Your Organization
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Additional Terms:
+
+1. Attribution: When using these test utilities in your own projects, we appreciate
+   (but do not require) attribution in your project's documentation or test files.
+
+2. Contributions: By submitting contributions to this project, you agree to license
+   your contributions under the same MIT license.
+
+3. Third-party Code: This project may include third-party code that is licensed
+   under different terms. See the THIRD_PARTY_NOTICES file for details.
+
+4. No Trademark Rights: This license does not grant you any rights to use any
+   contributors' names, logos, or trademarks.
+
+5. Patent Grant: Each contributor grants you a perpetual, worldwide, non-exclusive,
+   no-charge, royalty-free, irrevocable patent license to make, have made, use,
+   offer to sell, sell, import, and otherwise transfer their contribution(s) in
+   the Software.
+
+For questions about licensing or usage, please contact:
+legal@your-organization.com
+
+Additional Acknowledgments:
+
+This project includes inspiration and patterns from various open-source projects
+in the testing community. We are grateful for their contributions to the
+ecosystem:
+
+- Jest (https://jestjs.io)
+- TypeScript (https://www.typescriptlang.org)
+- Node.js (https://nodejs.org)
+
+---
+
+Note: The additional terms above are not intended to be legally binding
+restrictions, but rather guidelines and clarifications for the use of this
+software. The MIT License text remains the sole legally binding document.

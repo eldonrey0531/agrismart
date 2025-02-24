@@ -1,0 +1,160 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          Role      @default(USER)
+  status        Status    @default(PENDING)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  tokens        Token[]
+  products      Product[]
+  orders        Order[]
+  chats         Chat[]
+  messages      Message[]
+
+  @@map("users")
+}
+
+// Token model for auth tokens
+model Token {
+  id        String      @id @default(uuid())
+  token     String      @unique
+  type      TokenType
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime    @default(now())
+
+  @@index([userId])
+  @@map("tokens")
+}
+
+// Product model
+model Product {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  price       Float
+  stock       Int
+  images      String[]  // Array of image URLs
+  sellerId    String
+  seller      User      @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  status      Status    @default(PENDING)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  orderItems  OrderItem[]
+
+  @@index([sellerId])
+  @@map("products")
+}
+
+// Order model
+model Order {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      OrderStatus @default(PENDING)
+  totalAmount Float
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  // Relations
+  items       OrderItem[]
+
+  @@index([userId])
+  @@map("orders")
+}
+
+// Order item model
+model OrderItem {
+  id        String    @id @default(uuid())
+  orderId   String
+  order     Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int
+  price     Float
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
+
+// Chat model
+model Chat {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  messages   Message[]
+
+  @@index([userId])
+  @@map("chats")
+}
+
+// Message model
+model Message {
+  id        String    @id @default(uuid())
+  chatId    String
+  chat      Chat      @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([chatId])
+  @@index([userId])
+  @@map("messages")
+}
+
+// Enums
+enum Role {
+  ADMIN
+  SELLER
+  USER
+}
+
+enum Status {
+  ACTIVE
+  PENDING
+  SUSPENDED
+}
+
+enum TokenType {
+  REFRESH
+  VERIFICATION
+  RESET
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}

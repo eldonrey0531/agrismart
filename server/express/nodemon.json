@@ -1,0 +1,37 @@
+{
+  "watch": [
+    "*.ts",
+    "src/**/*.ts",
+    "config/**/*.ts",
+    "middleware/**/*.ts",
+    "models/**/*.ts",
+    "routes/**/*.ts",
+    "services/**/*.ts",
+    "utils/**/*.ts"
+  ],
+  "ignore": [
+    ".git",
+    "node_modules",
+    "dist",
+    "coverage",
+    "__tests__",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  "exec": "ts-node --files src/index.ts",
+  "ext": "ts,json",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "verbose": true,
+  "restartable": "rs",
+  "delay": "1000",
+  "events": {
+    "start": "clear || cls",
+    "restart": "clear || cls",
+    "crash": "echo '\nApplication crashed - waiting for changes...\n'"
+  },
+  "colours": true,
+  "legacyWatch": false,
+  "signal": "SIGTERM"
+}

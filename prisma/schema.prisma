@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  SELLER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          Role      @default(USER)
+  avatar        String?
+  phone         String?
+  isActive      Boolean   @default(true)
+  emailVerified Boolean   @default(false)
+  rating        Float?
+  storeInfo     Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  products      Product[]
+  reviews       Review[]
+  orders        Order[]
+  messages      Message[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String     @id @default(uuid())
+  name        String     @unique
+  slug        String     @unique
+  description String?
+  image       String?
+  isActive    Boolean    @default(true)
+  parentId    String?
+  parent      Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+  products    CategoryProduct[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String     @id @default(uuid())
+  title       String
+  description String     @db.Text
+  price       Float
+  stock       Int
+  isDigital   Boolean    @default(false)
+  isActive    Boolean    @default(true)
+  isFeatured  Boolean    @default(false)
+  rating      Float      @default(0)
+  views       Int        @default(0)
+  images      String[]
+  attributes  Json?
+  categories  CategoryProduct[]
+  sellerId    String
+  seller      User       @relation(fields: [sellerId], references: [id])
+  orders      Order[]
+  reviews     Review[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([sellerId])
+  @@map("products")
+}
+
+// Join table for Product and Category
+model CategoryProduct {
+  productId   String
+  categoryId  String
+  product     Product   @relation(fields: [productId], references: [id])
+  category    Category  @relation(fields: [categoryId], references: [id])
+  assignedAt  DateTime  @default(now())
+
+  @@id([productId, categoryId])
+  @@map("category_products")
+}
+
+model Order {
+  id              String    @id @default(uuid())
+  status          String
+  total           Float
+  quantity        Int
+  shippingAddress String?
+  paymentMethod   String?
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  productId       String
+  product         Product   @relation(fields: [productId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([productId])
+  @@map("orders")
+}
+
+model Review {
+  id          String    @id @default(uuid())
+  rating      Int
+  content     String
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([productId])
+  @@map("reviews")
+}
+
+model Message {
+  id          String    @id @default(uuid())
+  content     String
+  type        String
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  readAt      DateTime?
+
+  @@index([userId])
+  @@map("messages")
+}

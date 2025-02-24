@@ -1,0 +1,194 @@
+/* Base styles for code blocks */
+pre[class*="language-"],
+code[class*="language-"] {
+  color: #24292e;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0;
+  overflow: auto;
+  background: #f6f8fa;
+}
+
+/* Token colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6e7781;
+  font-style: italic;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.string,
+.token.attr-value {
+  color: #0550ae;
+}
+
+.token.punctuation,
+.token.operator {
+  color: #24292e;
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+  color: #116329;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name {
+  color: #cf222e;
+}
+
+.token.function,
+.token.deleted {
+  color: #953800;
+}
+
+.token.tag,
+.token.selector {
+  color: #116329;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+/* Line highlighting */
+.line-highlight {
+  background: rgba(255, 255, 0, 0.1);
+  border-left: 3px solid #cf222e;
+  margin-left: -1rem;
+  padding-left: calc(1rem - 3px);
+}
+
+/* Line numbers */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid #d0d7de;
+}
+
+.line-numbers-rows > span:before {
+  color: #6e7781;
+}
+
+/* Toolbar */
+div.code-toolbar > .toolbar {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar button {
+  background: #f3f4f6;
+  border: 1px solid #d0d7de;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: #24292e;
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar button:hover {
+  background: #e5e7eb;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  pre[class*="language-"],
+  code[class*="language-"] {
+    color: #e6edf3;
+    background: #0d1117;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8b949e;
+  }
+
+  .token.string,
+  .token.attr-value {
+    color: #79c0ff;
+  }
+
+  .token.punctuation,
+  .token.operator {
+    color: #e6edf3;
+  }
+
+  .token.entity,
+  .token.url,
+  .token.symbol,
+  .token.number,
+  .token.boolean,
+  .token.variable,
+  .token.constant,
+  .token.property,
+  .token.regex,
+  .token.inserted {
+    color: #7ee787;
+  }
+
+  .token.atrule,
+  .token.keyword,
+  .token.attr-name {
+    color: #ff7b72;
+  }
+
+  .token.function,
+  .token.deleted {
+    color: #ffa657;
+  }
+
+  .token.tag,
+  .token.selector {
+    color: #7ee787;
+  }
+
+  .line-numbers .line-numbers-rows {
+    border-right-color: #30363d;
+  }
+
+  .line-numbers-rows > span:before {
+    color: #8b949e;
+  }
+
+  div.code-toolbar > .toolbar button {
+    background: #21262d;
+    border-color: #30363d;
+    color: #e6edf3;
+  }
+
+  div.code-toolbar > .toolbar button:hover {
+    background: #30363d;
+  }
+}

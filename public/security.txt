@@ -1,0 +1,43 @@
+# Security Policy and Vulnerability Reporting
+Contact: security@agrismart.com
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://agrismart.com/pgp-key.txt
+Acknowledgments: https://agrismart.com/security/hall-of-fame
+Preferred-Languages: en
+Canonical: https://agrismart.com/.well-known/security.txt
+Policy: https://agrismart.com/security-policy
+Hiring: https://agrismart.com/careers/security
+
+# Reporting Security Issues
+We take security seriously at AgriSmart. If you discover any security issues, please follow these guidelines:
+
+1. Do NOT disclose the issue publicly
+2. Send details to security@agrismart.com
+3. Include:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Impact assessment
+   - Any possible mitigations
+
+We will acknowledge receipt within 24 hours and aim to provide regular updates about our progress.
+
+# Bug Bounty Program
+We maintain a bug bounty program for security researchers. Visit https://agrismart.com/security/bounty for details.
+
+# Security Updates
+Security updates and patches are typically released within:
+- Critical: 24-48 hours
+- High: 1 week
+- Medium: 2 weeks
+- Low: Next release cycle
+
+# Security Headers
+We implement:
+- Content Security Policy (CSP)
+- X-Frame-Options
+- X-Content-Type-Options
+- X-XSS-Protection
+- Strict Transport Security (HSTS)
+- Referrer Policy
+
+Last Updated: 2024-02-24

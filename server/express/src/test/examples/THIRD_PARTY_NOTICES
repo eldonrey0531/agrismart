@@ -1,0 +1,169 @@
+# Third Party Notices
+
+This document contains licenses and notices for open source software used in this project.
+
+## Direct Dependencies
+
+### Jest
+- Version: 29.7.0
+- License: MIT
+- Repository: https://github.com/facebook/jest
+```
+MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
+### TypeScript
+- Version: 5.3.3
+- License: Apache-2.0
+- Repository: https://github.com/microsoft/TypeScript
+```
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+
+Copyright (c) Microsoft Corporation. All rights reserved...
+```
+
+### Commander.js
+- Version: 9.4.1
+- License: MIT
+- Repository: https://github.com/tj/commander.js
+```
+MIT License
+
+Copyright (c) 2011 TJ Holowaychuk <tj@vision-media.ca>
+
+Permission is hereby granted, free of charge...
+```
+
+### Chalk
+- Version: 4.1.2
+- License: MIT
+- Repository: https://github.com/chalk/chalk
+```
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+Permission is hereby granted, free of charge...
+```
+
+## Development Dependencies
+
+### ESLint
+- Version: 8.56.0
+- License: MIT
+- Repository: https://github.com/eslint/eslint
+```
+MIT License
+
+Copyright OpenJS Foundation and other contributors...
+```
+
+### Prettier
+- Version: 3.1.1
+- License: MIT
+- Repository: https://github.com/prettier/prettier
+```
+MIT License
+
+Copyright © James Long and contributors...
+```
+
+### ts-jest
+- Version: 29.1.1
+- License: MIT
+- Repository: https://github.com/kulshekhar/ts-jest
+```
+MIT License
+
+Copyright (c) 2016-2023 Kulshekhar Kabra...
+```
+
+## Tooling and Infrastructure
+
+### Node.js
+- Version: 18.x | 20.x
+- License: MIT
+- Repository: https://github.com/nodejs/node
+```
+MIT License
+
+Copyright Node.js contributors. All rights reserved...
+```
+
+## License Notes
+
+1. **MIT License**
+   - Most of our dependencies use the MIT License
+   - Compatible with our project's MIT License
+   - Requires preservation of copyright and license notices
+
+2. **Apache-2.0 License**
+   - Used by TypeScript
+   - Compatible with MIT License
+   - Includes patent grant
+   - Requires preservation of copyright and license notices
+
+## Code Attribution
+
+### Jest Matchers
+Some matcher utilities are inspired by Jest's expect library:
+```typescript
+// Original Jest matcher
+expect(value).toBe(expected);
+
+// Our implementation
+TestAssertions.assertEqual(value, expected);
+```
+
+### TypeScript Types
+Some type definitions are inspired by TypeScript's built-in types:
+```typescript
+// Similar to TypeScript's built-in Partial
+type OptionalConfig<T> = {
+  [P in keyof T]?: T[P];
+};
+```
+
+## Dependencies Graph
+
+```
+@your-org/test-utils
+├── jest@29.7.0
+├── typescript@5.3.3
+├── commander@9.4.1
+└── chalk@4.1.2
+```
+
+## Updating Dependencies
+
+When updating dependencies, please:
+1. Check license compatibility
+2. Update this document
+3. Test functionality
+4. Update version in package.json
+
+## Security
+
+For security issues in third-party packages:
+1. Check advisories
+2. Update affected packages
+3. Document in CHANGELOG.md
+4. Follow responsible disclosure
+
+## Contact
+
+For questions about third-party licenses:
+- Email: legal@your-organization.com
+- GitHub: Open an issue with "license" label
+
+---
+
+Note: This document is maintained manually. Always verify license terms from original sources.

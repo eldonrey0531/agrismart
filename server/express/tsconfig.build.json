@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "jest.config.ts",
+    "scripts",
+    "src/test"
+  ],
+  "compilerOptions": {
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "declaration": true,
+    "noEmit": false,
+    "outDir": "dist"
+  }
+}

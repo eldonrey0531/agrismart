@@ -1,0 +1,113 @@
+{
+  "files": {
+    "required": [
+      "test-helpers.ts",
+      "test-config.ts",
+      "test-errors.ts",
+      "error-types.ts",
+      "api-builder.ts",
+      "http-utils.ts",
+      "timing-utils.ts",
+      "response-types.ts",
+      "test-matchers.ts",
+      "jest.setup.ts"
+    ],
+    "docs": [
+      "README.md",
+      "SETUP.md",
+      "TEST.md",
+      "UTILITIES.md"
+    ],
+    "examples": [
+      "auth.example.test.ts",
+      "advanced.example.test.ts",
+      "timing.example.test.ts"
+    ]
+  },
+  "dependencies": {
+    "dev": [
+      "@jest/globals",
+      "@types/jest",
+      "jest",
+      "ts-jest",
+      "typescript"
+    ],
+    "optional": [
+      "@types/node",
+      "ts-node",
+      "nodemon"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/src/test/utils/jest.setup.ts"
+    ],
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "typescript": {
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "commonjs",
+      "lib": ["es2020"],
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "types": ["jest", "node"],
+      "baseUrl": ".",
+      "paths": {
+        "@test/*": ["src/test/*"]
+      }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest -u",
+    "test:ci": "jest --ci --coverage"
+  },
+  "directories": {
+    "test": "src/test",
+    "utils": "src/test/utils",
+    "examples": "src/test/examples"
+  },
+  "options": {
+    "includeExamples": true,
+    "includeDocs": true,
+    "installOptionalDeps": false,
+    "configureTsconfig": true,
+    "configureJest": true,
+    "updatePackageJson": true,
+    "createGitignore": true
+  },
+  "gitignore": [
+    "coverage/",
+    "node_modules/",
+    ".env",
+    "*.log",
+    "dist/",
+    "build/"
+  ]
+}

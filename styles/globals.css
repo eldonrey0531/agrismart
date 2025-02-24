@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  /* Core Colors - Premium Dark Theme */
+  :root {
+    --background: #030A06;
+    --navbar-start: #0C1410;
+    --navbar-mid: #0E1B13;
+    --navbar-end: #223027;
+    --border: #38FF7E;
+    --selection-primary: #476C54;
+    --selection-light: #E3FFED;
+    --accent-start: #244A32;
+    --accent-mid: #172F21;
+    --accent-end: #244A32;
+    --highlight-start: #072110;
+    --highlight-mid: #021609;
+    --highlight-end: #010D05;
+    --glow-start: #38FF7E00;
+    --glow-end: #3C955B;
+  }
+}
+
+/* Base styles with premium effects */
+@layer base {
+  body {
+    @apply bg-gradient-to-b from-black via-[#030905] to-[#030A06] text-[#E3FFED] antialiased min-h-screen;
+    background-attachment: fixed;
+  }
+
+  /* Premium heading styles */
+  h1 {
+    @apply text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl;
+    text-shadow: 0 0 20px rgba(56, 255, 126, 0.15);
+    line-height: 1.15;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+    text-shadow: 0 0 15px rgba(56, 255, 126, 0.1);
+    line-height: 1.2;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+    text-shadow: 0 0 10px rgba(56, 255, 126, 0.1);
+    line-height: 1.25;
+  }
+}
+
+/* Premium animations and effects */
+@layer components {
+  /* Navbar styling */
+  .navbar {
+    @apply fixed top-0 w-full z-50;
+    background: linear-gradient(to right, var(--navbar-start), var(--navbar-mid), var(--navbar-end));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(56, 255, 126, 0.1);
+  }
+
+  /* Card styling */
+  .premium-card {
+    @apply rounded-lg border border-[#38FF7E]/10 bg-[#0E1B13]/60 backdrop-blur-sm;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(56, 255, 126, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .premium-card:hover {
+    border-color: rgba(56, 255, 126, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(56, 255, 126, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Button styling */
+  .premium-button {
+    @apply relative overflow-hidden rounded-lg px-4 py-2 transition-all duration-300;
+    background: linear-gradient(45deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+    border: 1px solid rgba(56, 255, 126, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(56, 255, 126, 0.05);
+  }
+
+  .premium-button:hover {
+    border-color: rgba(56, 255, 126, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(56, 255, 126, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .premium-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Selection effects */
+  ::selection {
+    background-color: #D8FEE580;
+    color: var(--selection-light);
+  }
+}
+
+/* Premium animations */
+@layer utilities {
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(56, 255, 126, 0.15);
+  }
+
+  /* Premium focus ring */
+  .focus-ring {
+    @apply outline-none ring-2 ring-[#38FF7E] ring-offset-2 ring-offset-[#030A06];
+    box-shadow: 0 0 15px rgba(56, 255, 126, 0.2);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px rgba(56, 255, 126, 0.1),
+                0 0 10px rgba(56, 255, 126, 0.1);
+  }
+  to {
+    box-shadow: 0 0 10px rgba(56, 255, 126, 0.2),
+                0 0 20px rgba(56, 255, 126, 0.2);
+  }
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-start), var(--accent-end));
+  border: 4px solid var(--background);
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--border), var(--accent-end));
+}

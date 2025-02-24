@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    /* Base colors */
+    --background: #0D1117;
+    --surface: #161B22;
+    --primary: #2C5F2D;
+    --accent: #97BF04;
+    --interactive: #FFB800;
+    --success: #238636;
+    --border: #4A6741;
+    --muted: #8B949E;
+    --dark-text: #333333;
+    --light-text: #F5F5F5;
+
+    /* Border colors */
+    --border-primary: #004E3F;
+    --border-secondary: #1C3023;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    /* Main gradient backgrounds */
+    --main-gradient: linear-gradient(
+      83.42deg,
+      #27664B 10.47%,
+      #22523E 17.67%,
+      #19362A 32.5%,
+      #030C07 80.2%
+    );
+    --secondary-gradient: linear-gradient(
+      195.08deg,
+      #0D1A12 6.21%,
+      #08110C 24.2%,
+      #030B06 56.26%,
+      #030B06 73.51%
+    );
+    --accent-gradient: linear-gradient(
+      323.91deg,
+      #00120F 0%,
+      #025A4A 57.15%,
+      #00120F 100%
+    );
+    --text-gradient: linear-gradient(
+      180deg,
+      #D8FEE5 0%,
+      #C0E4CD 100%
+    );
+  }
+}
+ 
+@layer components {
+  /* Gradient text utilities */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-text-gradient;
+  }
+
+  /* Gradient background utilities */
+  .bg-gradient-main {
+    @apply bg-main-gradient;
+  }
+
+  .bg-gradient-secondary {
+    @apply bg-secondary-gradient;
+  }
+
+  .bg-gradient-accent {
+    @apply bg-accent-gradient;
+  }
+
+  /* Component base styles */
+  .card {
+    @apply rounded-lg border border-border-primary bg-gradient-secondary p-6;
+  }
+
+  .input {
+    @apply rounded-md border border-border-secondary bg-surface px-4 py-2 text-light-text;
+  }
+
+  .button {
+    @apply rounded-md bg-gradient-accent px-6 py-2 text-light-text transition-all 
+    hover:opacity-90 active:opacity-80 disabled:opacity-50;
+  }
+
+  .nav-link {
+    @apply text-muted hover:text-light-text transition-colors;
+  }
+}
+
+@layer utilities {
+  /* Gradient border utilities */
+  .gradient-border {
+    border-image: var(--main-gradient) 1;
+  }
+
+  .gradient-border-accent {
+    border-image: var(--accent-gradient) 1;
+  }
+
+  /* Glass effect utilities */
+  .glass {
+    @apply bg-surface/80 backdrop-blur-sm;
+  }
+
+  .glass-dark {
+    @apply bg-background/90 backdrop-blur-md;
+  }
+
+  /* Custom scrollbar for the theme */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-primary) var(--surface);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--border-secondary);
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-interactive 
+    focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
